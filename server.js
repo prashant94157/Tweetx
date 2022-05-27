@@ -10,10 +10,10 @@ app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.send('API running'));
 
-app.use('/users', require('./routes/users'));
 app.use('/auth', require('./routes/auth'));
+app.use('/feed', require('./routes/feed'));
+app.use('/users', require('./routes/users'));
 app.use('/profile', require('./routes/profile'));
-app.use('/posts', require('./routes/posts'));
 
 const PORT = process.env.PORT || 5000;
 
