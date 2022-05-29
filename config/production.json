@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://user:123@cluster0.frd8i.mongodb.net/Tweetx?retryWrites=true&w=majority",
+  "jwtSecret": "hhchfcjbbvcjhvnjbvvvhvhvhv"
+}
