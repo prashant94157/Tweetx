@@ -5,9 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "server" : "nodemon server",
-    "client" : "npm start --prefix tweetx",
-    "dev" : "concurrently \"npm run server\" \"npm run client\""
+    "server": "nodemon server",
+    "client": "npm start --prefix tweetx",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix tweetx && npm run build --prefix tweetx"
   },
   "author": "Prashant Maurya",
   "license": "ISC",
