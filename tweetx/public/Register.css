@@ -1,0 +1,69 @@
+.pink {
+  color: #ff69b4 !important;
+}
+
+.btn-pink {
+  background-color: #ff69b4;
+  color: #fff;
+}
+
+form h1 {
+  margin-bottom: 40px;
+}
+
+.list-group-flush {
+  width: 50%;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.write {
+  margin-left: 25%;
+}
+
+.feed {
+  border-radius: 25px;
+  padding-right: 10%;
+}
+
+.head {
+  margin-left: 400px;
+}
+
+.col .nav {
+  width: auto;
+}
+
+.head {
+  padding-left: 40px;
+}
+
+hr {
+  width: 50%;
+}
+.semi {
+  background: #ff69b4;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  height: 90px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  border-bottom-left-radius: 90px;
+  border-top-left-radius: 90px;
+}
+
+@media screen and (max-width: 768px) {
+  .list-group-flush {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+  .semi {
+    display: none;
+  }
+  .followersub {
+    font-size: 12px;
+  }
+}
