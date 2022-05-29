@@ -5,9 +5,47 @@ const Profile = require('../models/Profile');
 const User = require('../models/User');
 const Posts = require('../models/Post');
 
+router.get('/all', auth, async (req, res) => {
+  try {
+    const profile = await Profile.find().populate('user', 'name avatar');
+
+    res.json(profile);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+router.get('/', auth, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id })
+      .populate({
+        path: 'follower',
+        populate: {
+          path: 'user',
+          select: 'name avatar',
+        },
+      })
+      .populate({
+        path: 'following',
+        populate: {
+          path: 'user',
+          select: 'name avatar',
+        },
+      });
+
+    res.json(profile);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 router.get('/post', auth, async (req, res) => {
   try {
-    const posts = await Posts.find({ user: req.user.id });
+    const posts = await Posts.find({ user: req.user.id })
+      .populate('user')
+      .select('-password');
 
     res.json(posts);
   } catch (error) {

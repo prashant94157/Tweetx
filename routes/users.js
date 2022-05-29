@@ -6,6 +6,7 @@ const auth = require('../middlewares/auth');
 router.get('/', auth, async (req, res) => {
   try {
     const users = await User.find();
+    // console.log(users);
     res.json(users);
   } catch (error) {
     console.error(error.message);
