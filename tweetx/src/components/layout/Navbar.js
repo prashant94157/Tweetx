@@ -10,12 +10,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   console.log(pathname);
   const authlinks = (
     <Fragment>
-      <Link
-        to='/feed'
+      <a
+        onClick={logout}
+        href='#!'
         className='d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none'
       >
         <span className='fs-4 pink fw-bold'>Tweetx</span>
-      </Link>
+      </a>
       <ul className='nav nav-pills'>
         <li className='nav-item'>
           <Link
@@ -45,13 +46,12 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     </Fragment>
   );
   const guestlinks = (
-    <a
-      onClick={logout}
-      href='#!'
+    <Link
+      to='/feed'
       className='d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none'
     >
       <span className='fs-4 pink fw-bold'>Tweetx</span>
-    </a>
+    </Link>
   );
   return (
     <div className='container'>
