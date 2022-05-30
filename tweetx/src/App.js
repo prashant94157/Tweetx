@@ -4,7 +4,8 @@ import Navbar from './components/layout/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import './App.css';
-import Feed from './components/users/Feed';
+import Feed from './components/users/Feeds';
+import Write from './components/users/Write';
 import Users from './components/users/Users';
 import Profile from './components/users/Profile';
 import { Provider } from 'react-redux';
@@ -21,7 +22,7 @@ if (localStorage.token) {
 const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
-  }, [loadUser]);
+  }, [loadUser]); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <Provider store={store}>
       <Router>
@@ -44,6 +45,11 @@ const App = () => {
             exact
             path='/profile'
             element={<PrivateRoute component={Profile} />}
+          />
+          <Route
+            exact
+            path='/write-post'
+            element={<PrivateRoute component={Write} />}
           />
         </Routes>
       </Router>

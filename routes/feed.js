@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
 const User = require('../models/User');
-const Profile = require('../models/Profile');
 const auth = require('../middlewares/auth');
 const { check, validationResult } = require('express-validator');
 
@@ -19,7 +18,6 @@ router.post(
       const user = await User.findById(req.user.id).select('-password');
       const newPost = new Post({
         text: req.body.content,
-        avatar: user.avatar,
         user: req.user.id,
       });
 
@@ -35,17 +33,12 @@ router.post(
 //read feed
 router.get('/', auth, async (req, res) => {
   try {
-    const profile = await Profile.findOne({ user: req.user.id }).select(
-      'following'
-    );
-    const following = profile.following;
-    let posts = [];
-    following.forEach(async (user) => {
-      const newPosts = await Post.find({ user: user.user });
-      posts = [...posts, ...newPosts];
-    });
-    res.send('feed is ready');
-  } catch (error) {}
+    const allPosts = await Post.find().populate('user', 'name avatar');
+    res.json(allPosts);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).result('Server Error');
+  }
 });
 
 module.exports = router;

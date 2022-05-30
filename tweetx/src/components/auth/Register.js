@@ -53,7 +53,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                   required
                   onChange={(e) => onChangeHandler(e)}
                 />
-                <label for='floatingInput'>Name</label>
+                <label htmlFor='floatingInput'>Name</label>
               </div>
 
               <div className='form-floating mb-3'>
@@ -67,7 +67,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                   onChange={(e) => onChangeHandler(e)}
                   required
                 />
-                <label for='floatingInput'>Email address</label>
+                <label htmlFor='floatingInput'>Email address</label>
               </div>
 
               <div className='form-floating'>
@@ -81,7 +81,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                   onChange={(e) => onChangeHandler(e)}
                   required
                 />
-                <label for='floatingPassword'>Password</label>
+                <label htmlFor='floatingPassword'>Password</label>
               </div>
               <div className='form-floating mb-3 mt-3'>
                 <input

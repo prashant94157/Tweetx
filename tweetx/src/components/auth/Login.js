@@ -46,7 +46,7 @@ const Login = ({ login, isAuthenticated }) => {
                   onChange={(e) => onChangeHandler(e)}
                   required
                 />
-                <label for='floatingInput'>Email address</label>
+                <label htmlFor='floatingInput'>Email address</label>
               </div>
 
               <div className='form-floating'>
@@ -60,7 +60,7 @@ const Login = ({ login, isAuthenticated }) => {
                   onChange={(e) => onChangeHandler(e)}
                   required
                 />
-                <label for='floatingPassword'>Password</label>
+                <label htmlFor='floatingPassword'>Password</label>
               </div>
 
               <div className='row mt-4'>
