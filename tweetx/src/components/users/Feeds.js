@@ -9,10 +9,7 @@ import Feed from './Feed';
 const Feeds = ({
   auth: { isAuthenticated, loading: authLoading },
   post: { loading: postLoading, posts },
-  profile: {
-    loading: profileLoading,
-    profile: { following },
-  },
+  profile: { loading: profileLoading, profile },
   getCurrentProfile,
   getPosts,
 }) => {
@@ -33,15 +30,16 @@ const Feeds = ({
       </Link>
 
       <div className='list-group list-group-flush scrollarea mt-5'>
-        {following.map((ele) =>
-          posts.map((post, index) =>
-            post.user._id === ele.user._id ? (
-              <Feed key={index} post={post} />
-            ) : (
-              ''
+        {profile.following.length > 0 &&
+          profile.following.map((ele) =>
+            posts.map((post, index) =>
+              post.user._id === ele.user._id ? (
+                <Feed key={index} post={post} />
+              ) : (
+                ''
+              )
             )
-          )
-        )}
+          )}
       </div>
     </div>
   );

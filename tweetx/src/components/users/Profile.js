@@ -45,10 +45,13 @@ const Profile = ({
               <li className='text-secondary me-3'>
                 <p>
                   Posts :{' '}
-                  {posts.reduce(
-                    (sum, post) => sum + (post.user._id === user._id ? 1 : 0),
-                    0
-                  )}
+                  {posts.length > 0
+                    ? posts.reduce(
+                        (sum, post) =>
+                          sum + (post.user._id === user._id ? 1 : 0),
+                        0
+                      )
+                    : 0}
                 </p>
               </li>
               <li className='text-secondary'>
@@ -100,9 +103,10 @@ const Profile = ({
           </div>
           <div className='tab-pane fade' id='messages'>
             <div className='list-group list-group-flush scrollarea mt-5'>
-              {profile.following.map(({ user }, index) => (
-                <Following user={user} key={index} />
-              ))}
+              {profile.following.length > 0 &&
+                profile.following.map(({ user }, index) => (
+                  <Following user={user} key={index} />
+                ))}
             </div>
           </div>
         </div>
