@@ -24,7 +24,13 @@ const Profile = ({
   if (!isAuthenticated) {
     return <Navigate to='/' />;
   }
-
+  let f =
+    posts.length > 0
+      ? posts.reduce(
+          (sum, post) => sum + (post.user._id === user._id ? 1 : 0),
+          0
+        )
+      : 0;
   return authLoading || profileLoading || postLoading ? (
     <Spinner />
   ) : (
@@ -44,16 +50,7 @@ const Profile = ({
             <h1>{user.name}</h1>
             <ul className='nav nav-pills opacity-75'>
               <li className='text-secondary me-3'>
-                <p>
-                  Posts :{' '}
-                  {posts.length > 0
-                    ? posts.reduce(
-                        (sum, post) =>
-                          sum + (post.user._id === user._id ? 1 : 0),
-                        0
-                      )
-                    : 0}
-                </p>
+                <p>Posts : {f}</p>
               </li>
               <li className='text-secondary'>
                 <p>Followers : {profile.follower.length}</p>
@@ -88,14 +85,20 @@ const Profile = ({
       <div className='m-4'>
         <div className='tab-content'>
           <div className='tab-pane fade show active' id='home'>
-            {posts.length > 0 ? (
-              posts.map(
-                (post, index) =>
-                  post.user._id === user._id && <Post post={post} key={index} />
-              )
-            ) : (
-              <h4>No posts found...</h4>
-            )}
+            <div className='list-group list-group-flush scrollarea mt-5'>
+              {f > 0 ? (
+                posts.map((post, index) => {
+                  f = 1;
+                  return (
+                    post.user._id === user._id && (
+                      <Post post={post} key={index} />
+                    )
+                  );
+                })
+              ) : (
+                <h4>No posts found...</h4>
+              )}
+            </div>
           </div>
           <div className='tab-pane fade' id='profile'>
             <div className='list-group list-group-flush scrollarea mt-5'>
