@@ -42,6 +42,7 @@ const Login = ({ login, isAuthenticated }) => {
                   id='floatingInput'
                   placeholder='name@example.com'
                   name='email'
+                  autocomplete='email'
                   value={email}
                   onChange={(e) => onChangeHandler(e)}
                   required
@@ -51,11 +52,12 @@ const Login = ({ login, isAuthenticated }) => {
 
               <div className='form-floating'>
                 <input
-                  type='current-password'
+                  type='password'
                   className='form-control'
                   id='floatingPassword'
                   placeholder='Password'
                   name='password'
+                  autocomplete='current-password'
                   value={password}
                   onChange={(e) => onChangeHandler(e)}
                   required
