@@ -7,6 +7,7 @@ import { getPosts } from '../../actions/post';
 import Following from './Following';
 import Post from './Post';
 import Follower from './Follower';
+import Spinner from '../layout/Spinner';
 
 const Profile = ({
   auth: { isAuthenticated, loading: authLoading, user },
@@ -25,7 +26,7 @@ const Profile = ({
   }
 
   return authLoading || profileLoading || postLoading ? (
-    <div>loading</div>
+    <Spinner />
   ) : (
     <div>
       <div className='container'>
@@ -87,26 +88,35 @@ const Profile = ({
       <div className='m-4'>
         <div className='tab-content'>
           <div className='tab-pane fade show active' id='home'>
-            {posts.length > 0 &&
+            {posts.length > 0 ? (
               posts.map(
                 (post, index) =>
                   post.user._id === user._id && <Post post={post} key={index} />
-              )}
+              )
+            ) : (
+              <h4>No posts found...</h4>
+            )}
           </div>
           <div className='tab-pane fade' id='profile'>
             <div className='list-group list-group-flush scrollarea mt-5'>
-              {profile.follower.length > 0 &&
+              {profile.follower.length > 0 ? (
                 profile.follower.map(({ user }, index) => (
                   <Follower user={user} key={index} />
-                ))}
+                ))
+              ) : (
+                <h4>No followers found...</h4>
+              )}
             </div>
           </div>
           <div className='tab-pane fade' id='messages'>
             <div className='list-group list-group-flush scrollarea mt-5'>
-              {profile.following.length > 0 &&
+              {profile.following.length > 0 ? (
                 profile.following.map(({ user }, index) => (
                   <Following user={user} key={index} />
-                ))}
+                ))
+              ) : (
+                <h4>No followings found...</h4>
+              )}
             </div>
           </div>
         </div>

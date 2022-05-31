@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { getCurrentProfile } from '../../actions/profile';
 import { getPosts } from '../../actions/post';
 import Feed from './Feed';
+import Spinner from '../layout/Spinner';
 
 const Feeds = ({
   auth: { isAuthenticated, loading: authLoading },
@@ -22,7 +23,7 @@ const Feeds = ({
     return <Navigate to='/' />;
   }
   return authLoading || profileLoading || postLoading ? (
-    <div>loading</div>
+    <Spinner />
   ) : (
     <div>
       <Link to='/write-post' className='btn mt-5 write btn-lg btn-pink'>

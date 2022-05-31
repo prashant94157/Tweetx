@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const { pathname } = useLocation();
-  console.log(pathname);
+
   const authlinks = (
     <Fragment>
       <a

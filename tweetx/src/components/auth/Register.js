@@ -72,7 +72,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
               <div className='form-floating'>
                 <input
-                  type='password'
+                  type='new-password'
                   className='form-control'
                   id='floatingPassword'
                   placeholder='Password'
@@ -85,7 +85,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               </div>
               <div className='form-floating mb-3 mt-3'>
                 <input
-                  type='password'
+                  type='new-password'
                   className='form-control'
                   id='floatingPassword'
                   placeholder='Password'

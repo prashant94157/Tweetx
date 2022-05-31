@@ -11,7 +11,11 @@ export const getPosts = () => async (dispatch) => {
   try {
     const response = await axios.get('/feed');
     dispatch({ type: GET_POSTS, payload: response.data });
-  } catch (err) {
+  } catch (error) {
+    const err = error.response.data.errors;
+    if (err) {
+      err.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
     dispatch({
       type: POST_ERROR,
       payload: {
@@ -38,7 +42,11 @@ export const write = (content) => async (dispatch) => {
       payload: res.data,
     });
     dispatch(getPosts());
-  } catch (err) {
+  } catch (error) {
+    const err = error.response.data.errors;
+    if (err) {
+      err.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
     dispatch({
       type: ADD_POST_ERROR,
       payload: {

@@ -22,7 +22,11 @@ export const loadUser = () => async (dispatch) => {
       type: USER_LOADED,
       payload: res.data,
     });
-  } catch (err) {
+  } catch (error) {
+    const err = error.response.data.errors;
+    if (err) {
+      err.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
     dispatch({
       type: AUTH_ERROR,
     });
@@ -86,5 +90,6 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
+  dispatch(setAlert('Successfully logged out', 'success'));
   dispatch({ type: LOGOUT });
 };

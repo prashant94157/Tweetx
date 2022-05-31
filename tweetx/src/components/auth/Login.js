@@ -51,7 +51,7 @@ const Login = ({ login, isAuthenticated }) => {
 
               <div className='form-floating'>
                 <input
-                  type='password'
+                  type='current-password'
                   className='form-control'
                   id='floatingPassword'
                   placeholder='Password'

@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getUsers } from '../../actions/users';
+import Spinner from '../layout/Spinner';
 
 const Users = ({
   getUsers,
@@ -21,14 +22,17 @@ const Users = ({
   }
 
   return authLoading || usersLoading ? (
-    <div>loading</div>
+    <Spinner />
   ) : (
     <div className='list-group list-group-flush scrollarea mt-5'>
-      {users.map(({ user, following, follower }) => {
+      {users.map(({ user, following, follower }, index) => {
         let fl = follower.find((obj) => obj.user === _id);
 
         return (
-          <div className='mt-4 mb-4 border-bottom list-group-item d-flex gap-3 py-3'>
+          <div
+            className='mt-4 mb-4 border-bottom list-group-item d-flex gap-3 py-3'
+            key={index}
+          >
             <img
               src={user.avatar}
               alt='twbs'

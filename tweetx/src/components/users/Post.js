@@ -29,7 +29,7 @@ const Post = ({
           </p>
           <p className='mb-0 opacity-75'>{text}</p>
         </div>
-        <div class='semi'></div>
+        <div className='semi'></div>
       </div>
     </div>
   );
