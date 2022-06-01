@@ -5,6 +5,7 @@ const Profile = require('../models/Profile');
 const User = require('../models/User');
 const Posts = require('../models/Post');
 
+//give all profiles when user is looged in
 router.get('/all', auth, async (req, res) => {
   try {
     const profile = await Profile.find().populate('user', 'name avatar');
@@ -16,6 +17,7 @@ router.get('/all', auth, async (req, res) => {
   }
 });
 
+//give logged in user's Profile
 router.get('/', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user.id })
@@ -41,6 +43,7 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+//give logged in user's Posts
 router.get('/post', auth, async (req, res) => {
   try {
     const posts = await Posts.find({ user: req.user.id })
@@ -54,6 +57,7 @@ router.get('/post', auth, async (req, res) => {
   }
 });
 
+//give logged in user's follower
 router.get('/follower', auth, async (req, res) => {
   try {
     const follower = await Profile.find({ user: req.user.id }).select(
@@ -66,6 +70,7 @@ router.get('/follower', auth, async (req, res) => {
   }
 });
 
+//give logged in user's following
 router.get('/following', auth, async (req, res) => {
   try {
     const following = await Profile.find({ user: req.user.id }).select(
@@ -78,6 +83,7 @@ router.get('/following', auth, async (req, res) => {
   }
 });
 
+//follow
 router.put('/follower/add/:user_id', auth, async (req, res) => {
   try {
     const profile1 = await Profile.findOne({ user: req.user.id });
@@ -104,6 +110,7 @@ router.put('/follower/add/:user_id', auth, async (req, res) => {
   }
 });
 
+//remove follow
 router.put('/follower/remove/:user_id', auth, async (req, res) => {
   try {
     const profile1 = await Profile.findOne({ user: req.user.id });

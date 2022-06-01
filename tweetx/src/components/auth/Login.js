@@ -57,7 +57,7 @@ const Login = ({ login, isAuthenticated }) => {
                   id='floatingPassword'
                   placeholder='Password'
                   name='password'
-                  autocomplete='current-password'
+                  autoComplete='current-password'
                   value={password}
                   onChange={(e) => onChangeHandler(e)}
                   required

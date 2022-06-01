@@ -72,10 +72,11 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
               <div className='form-floating'>
                 <input
-                  type='new-password'
+                  type='password'
                   className='form-control'
                   id='floatingPassword'
                   placeholder='Password'
+                  autoComplete='new-password'
                   name='password'
                   value={password}
                   onChange={(e) => onChangeHandler(e)}
@@ -85,10 +86,11 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               </div>
               <div className='form-floating mb-3 mt-3'>
                 <input
-                  type='new-password'
+                  type='password'
                   className='form-control'
                   id='floatingPassword'
                   placeholder='Password'
+                  autoComplete='new-password'
                   name='password2'
                   value={password2}
                   onChange={(e) => onChangeHandler(e)}
