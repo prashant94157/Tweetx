@@ -103,7 +103,7 @@ router.put('/follower/add/:user_id', auth, async (req, res) => {
     await profile1.save();
     await profile2.save();
     // res.redirect('/follower');
-    res.send('added follower');
+    res.json({ id: req.user.id });
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Server Error');

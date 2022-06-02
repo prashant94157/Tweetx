@@ -42,7 +42,7 @@ const Login = ({ login, isAuthenticated }) => {
                   id='floatingInput'
                   placeholder='name@example.com'
                   name='email'
-                  autocomplete='email'
+                  autoComplete='email'
                   value={email}
                   onChange={(e) => onChangeHandler(e)}
                   required

@@ -46,7 +46,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                 <input
                   type='text'
                   className='form-control'
-                  id='floatingInput'
+                  // id='floatingInput'
                   placeholder='Name'
                   name='name'
                   value={name}
@@ -60,7 +60,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                 <input
                   type='email'
                   className='form-control'
-                  id='floatingInput'
+                  // id='floatingInput'
                   placeholder='name@example.com'
                   name='email'
                   value={email}
@@ -74,7 +74,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                 <input
                   type='password'
                   className='form-control'
-                  id='floatingPassword'
+                  // id='floatingPassword'
                   placeholder='Password'
                   autoComplete='new-password'
                   name='password'
@@ -88,7 +88,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                 <input
                   type='password'
                   className='form-control'
-                  id='floatingPassword'
+                  // id='floatingPassword'
                   placeholder='Password'
                   autoComplete='new-password'
                   name='password2'
@@ -96,7 +96,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                   onChange={(e) => onChangeHandler(e)}
                   required
                 />
-                <label for='floatingPassword'>Confirm Password</label>
+                <label htmlFor='floatingPassword'>Confirm Password</label>
               </div>
               <div className='hstack gap-3'>
                 <button
